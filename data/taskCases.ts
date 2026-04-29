@@ -1,3 +1,8 @@
+
+// Data-driven test scenarios used by task-board.spec.ts
+// Each object represents one acceptance criteria scenario
+// The test loop reads this data and runs the same test logic against each case
+
 export const taskCases = [
   {
     app: 'Web Application',

@@ -1,8 +1,12 @@
 # Asana Evaluation - Playwright TypeScript Test Suite
 
-This repository contains a Playwright-driven automation suite written in TypeScript for a technical evaluation.
+Playwright-driven automation suite written in TypeScript using a data-driven test design to reduce duplication and improve scalability.
 
-The suite validates task placement and tag behavior in a demo Asana-style application using a data-driven test design to reduce duplication and improve scalability.
+## Validation Results
+
+- 21 tests passing across Chromium, Firefox, and WebKit
+- GitHub Actions workflow passing
+- Includes 1 login smoke test and 6 data-driven task verification scenarios
 
 ---
 
