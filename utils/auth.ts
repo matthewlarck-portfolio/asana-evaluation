@@ -7,5 +7,5 @@ export async function login(page: Page) {
   await page.getByRole('textbox', { name: /Password/i }).fill('password123');
   await page.getByRole('button', { name: /Sign in/i }).click();
 
-  await expect(page).not.toHaveURL(/Sign in|Login/i);
+  await expect(page.getByRole('button', { name: /Web Application/i })).toBeVisible();
 }

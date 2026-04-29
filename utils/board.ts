@@ -1,7 +1,7 @@
 import { Page, expect } from '@playwright/test';
 
 export async function navigateToApp(page: Page, appName: string) {
-  await page.getByText(appName, { exact: true }).click();
+  await page.getByRole('button', { name: new RegExp(appName, 'i') }).click();
 }
 
 export async function verifyTaskInColumn(
@@ -11,10 +11,11 @@ export async function verifyTaskInColumn(
 ) {
   const column = page
     .locator('div')
-    .filter({ hasText: columnName })
-    .filter({ hasText: taskName });
+    .filter({ has: page.getByRole('heading', { name: new RegExp(columnName, 'i') }) });
 
-  await expect(column.getByText(taskName, { exact: true })).toBeVisible();
+  await expect(
+    column.getByRole('heading', { name: taskName })
+  ).toBeVisible();
 }
 
 export async function verifyTaskTags(
@@ -24,9 +25,11 @@ export async function verifyTaskTags(
 ) {
   const taskCard = page
     .locator('div')
-    .filter({ hasText: taskName });
+    .filter({ has: page.getByRole('heading', { name: taskName }) });
 
-  for (const tag of tags) {
-    await expect(taskCard.getByText(tag, { exact: true })).toBeVisible();
-  }
+    for (const tag of tags) {
+    await expect(
+        taskCard.getByText(tag, { exact: true }).first()
+    ).toBeVisible();
+}
 }
